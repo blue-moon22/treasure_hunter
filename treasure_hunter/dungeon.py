@@ -2,6 +2,17 @@ import random
 import copy
 from argparse import ArgumentParser
 
+dungeon2 = {
+   'treasure' : [1], # Room 1 contains treasure
+   'adventurer': 0, # The adventurer starts in room 0
+   'troll': 2, # The troll starts in room 2
+   'network': [[1], #Room zero connects to room 1
+               [0,2], #Room one connects to rooms 0 and 2
+               [1,3], #Room 2 connects to room 1 and 3
+               [2]] # Room 3 connects to room 2
+
+}
+
 def random_move(network, current_loc):
     targets=network[current_loc]
     return random.choice(targets)
@@ -28,7 +39,7 @@ def run_to_result(dungeon):
     # don't run forever, return 0 (e.g. if there is no treasure and the troll can't reach the adventurer)
     return result
 
-def success_chance(dungeon, trials):
+def success_chance(trials, dungeon=dungeon2):
    successes=0
    for _ in range(trials):
        outcome = run_to_result(dungeon)
@@ -44,18 +55,7 @@ def process():
 
     arguments= parser.parse_args()
 
-    dungeon2 = {
-       'treasure' : [1], # Room 1 contains treasure
-       'adventurer': 0, # The adventurer starts in room 0
-       'troll': 2, # The troll starts in room 2
-       'network': [[1], #Room zero connects to room 1
-                   [0,2], #Room one connects to rooms 0 and 2
-                   [1,3], #Room 2 connects to room 1 and 3
-                   [2]] # Room 3 connects to room 2
-
-    }
-
-    success_chance(dungeon = dungeon2, trials = arguments.trials)
+    success_chance(trials = arguments.trials)
 
 if __name__ == "__main__":
     process()
