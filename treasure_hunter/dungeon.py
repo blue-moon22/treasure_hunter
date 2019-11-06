@@ -55,7 +55,11 @@ def process():
 
     arguments= parser.parse_args()
 
-    success_chance(trials = arguments.trials)
+    # assert isinstance(arguments.trials, int)
+
+    output = "Chance of success: " + str(success_chance(trials = arguments.trials))
+
+    print(output)
 
 if __name__ == "__main__":
     process()
