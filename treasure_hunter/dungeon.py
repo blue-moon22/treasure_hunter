@@ -51,7 +51,7 @@ def success_chance(trials, dungeon=dungeon2):
 def process():
     parser = ArgumentParser(description = "Calculate probability of succeeding in treasure hunter game")
 
-    parser.add_argument('--trials', '-t')
+    parser.add_argument('--trials', '-t', type=int)
 
     arguments= parser.parse_args()
 
