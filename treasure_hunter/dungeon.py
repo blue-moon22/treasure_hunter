@@ -37,14 +37,14 @@ def success_chance(dungeon, trials):
    success_fraction = successes/trials
    return success_fraction
 
- def process():
-   parser = ArgumentParser(description = "Calculate probability of succeeding in treasure hunter game")
+def process():
+    parser = ArgumentParser(description = "Calculate probability of succeeding in treasure hunter game")
 
-   parser.add_argument('--trials', '-t')
+    parser.add_argument('--trials', '-t')
 
-   arguments= parser.parse_args()
+    arguments= parser.parse_args()
 
-   dungeon2 = {
+    dungeon2 = {
        'treasure' : [1], # Room 1 contains treasure
        'adventurer': 0, # The adventurer starts in room 0
        'troll': 2, # The troll starts in room 2
@@ -53,9 +53,9 @@ def success_chance(dungeon, trials):
                    [1,3], #Room 2 connects to room 1 and 3
                    [2]] # Room 3 connects to room 2
 
-   }
+    }
 
-   success_chance(dungeon = dungeon2, trials = arguments.trials)
+    success_chance(dungeon = dungeon2, trials = arguments.trials)
 
 if __name__ == "__main__":
     process()
